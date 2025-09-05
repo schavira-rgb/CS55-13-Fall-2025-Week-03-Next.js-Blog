@@ -3,14 +3,13 @@ import Image from 'next/image'; // Import Image component for images
 import styles from './layout.module.css'; // Import styles for the layout
 import utilStyles from '../styles/utils.module.css'; // Import styles for the layout
 import Link from 'next/link'; // Import Link component for navigation
- 
-const name = 'Estevan Chavira';
-export const siteTitle = 'Next.js Sample Website';
- 
+
+export const siteTitle = 'Next.js Sample Website'; // Export site title constant
+
 export default function Layout({ children, home }) { // Define and export Layout component function
-  return (
-    <div className={styles.container}> // Add container styles
-      <Head> // Add metadata to the page
+  return ( // Return JSX content
+    <div className={styles.container}> 
+      <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
@@ -25,45 +24,8 @@ export default function Layout({ children, home }) { // Define and export Layout
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt=""
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <Image
-                priority
-                src="/images/profile.jpg"
-                className={utilStyles.borderCircle}
-                height={108}
-                width={108}
-                alt=""
-              />
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
+      <header className={styles.header}></header>
       <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
-        </div>
-      )}
     </div>
   ); // End return statement
 } // End component function
